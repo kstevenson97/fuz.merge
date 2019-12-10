@@ -1,0 +1,76 @@
+---
+title: "Fuzzy_Match"
+author: "Kenneth Stevenson and Harrison Karp"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE, message = FALSE)
+```
+
+Often when we want to join two tables together, we don't have unique ID to join by and have to use a column they have in common, often names. A lot of the time the data is entered manually so there might be typos in the names, or it might use a different format. For example, one might include prefixes or suffixes while the other might not. To do a normal join these columns would not match. The `fuz.merge` package allows us to join tables based on approximate matches and provides other functions to facilitate this process to ensure matches are accurate.
+
+## The Function
+
+The primary function of this package is `fuzzy_match`
+
+```{r eval = FALSE, echo = TRUE}
+  fuzzy_match(table1, table2, by1, by2, method = "jw", cutoff = .1, join_type = "inner", sort = "desc")
+```
+
+The function implements fuzzy matching by calculating finding the closest match between tables where the distance between the two values is less than the specified cutoff. 
+
+## Data Sets
+
+* The `congress` data frame has information on  541 U.S. Congressmembers and was retrieved from [data.world](https://data.world/govtrack/us-congress-legislators)
+
+* The `politwoops` data frame has 1852 observations of various public officials who are being tracked by Politwoops for deleting tweets and was retrieved from [propublica.org](https://www.propublica.org/datastore/dataset/politicians-tracked-by-politwoops)
+
+## Example: Inner Join
+
+```{r}
+library(fuz.merge)
+congress <- dplyr::select(congress, name, gender)
+politwoops <- dplyr::select(politwoops, full_name, user_name, account_type)
+congress$name <- scramble(congress$name, 2)
+politwoops$full_name <- scramble(politwoops$full_name, 1)
+
+congress[1:10,"name"]
+politwoops[1:10,"full_name"]
+
+```
+
+The scramble function randomly changed characters for the names so we can test
+the fuzzy_match. First we want to use the clean() function on each dataset so we
+can minimize the differences between the two columns we are going to join by.
+
+```{r}
+congress <- clean(congress, name, selected = ",", suffixes = T, prefixes = T)
+congress[1:20,1]
+```
+
+So now we have removed the prefixes, suffixes and commas from each column of names.
+
+```{r}
+df <- fuzzy_match(congress, politwoops, name, full_name, cutoff = .1, 
+                  join_type = "inner", sort = "desc")
+df[1:15,]
+```
+
+Using the sort argument sorted the table in descending order of the match_vals 
+column so the row at top is the least accurate. Looking at the by.x and by.y 
+column, it's clear that this is the correct merge. The probability of having a
+mismatch further down is low since the first row had the biggest string distance
+between the matching columns.
+
+
+
+

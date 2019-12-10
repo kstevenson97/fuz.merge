@@ -1,0 +1,33 @@
+#' @title Politwoops Dataframe
+#' @description Politwoops is a public database maintained by ProPublica which tracks
+#' deleted tweets by public officials
+#' @format A data frame with 1852 rows and 16 variables:
+#' \describe{
+#'   \item{\code{full_name}}{Full name of account user}
+#'   \item{\code{user_name}}{character Twitter handle}
+#'   \item{\code{twitter_id}}{double Unique id for Twitter account}
+#'   \item{\code{party_name}}{integer User's political party}
+#'   \item{\code{state}}{integer User's state of residence}
+#'   \item{\code{office_title}}{integer Official Tital}
+#'   \item{\code{account_type}}{integer Type of Twitter account. Has three values:
+#'   campaign, officail, personal}
+#'   \item{\code{first_name}}{character First Name}
+#'   \item{\code{middle_name}}{character Middle Name}
+#'   \item{\code{last_name}}{character Last Name}
+#'   \item{\code{suffix}}{character Suffix}
+#'   \item{\code{bioguide_id}}{character ID number for user}
+#'   \item{\code{gender}}{character gender}
+#'   \item{\code{fec_candidate_id}}{character FEC ID number}
+#'   \item{\code{district}}{double Congressional district}
+#'   \item{\code{branch}}{character Branch of Governemnt}
+#'}
+#' @details Contains information for the accounts of politicains being tracked
+#' by politwoops.
+#' @docType data
+#' @keywords datasets
+#' @name politwoops
+#' @usage politwoops
+#' @source \href{https://www.propublica.org/datastore/dataset/politicians-tracked-by-politwoops}{https://www.propublica.org/datastore/dataset/politicians-tracked-by-politwoops}
+NULL
+
+
