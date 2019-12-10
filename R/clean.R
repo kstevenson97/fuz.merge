@@ -120,5 +120,3 @@ clean <-function(df, column, replacement = "", selected = NULL, prefixes = FALSE
   return(df)
 }
 
-clean(congress, name, prefixes =T, suffixes = T)
-
