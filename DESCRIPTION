@@ -24,7 +24,8 @@ Imports:
     dplyr,
     varhandle,
     stringdist,
-    rapportools
+    rapportools,
+    knitr
 RoxygenNote: 7.0.2
 Suggests: 
     knitr,
