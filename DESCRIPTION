@@ -3,7 +3,7 @@ Date: 2019-12-12
 Type: Package
 Title: This package provides functions to implement and aid in Fuzzy Matching
 Version: 0.1.0
-BugReports: https://github.com/kstevenson/fuz.merge/issues
+BugReports: https://github.com/kstevenson97/fuz.merge/issues
 Authors@R: c(person(given = "Kenneth",
                family = "Stevenson",
                role = c("cre"),
