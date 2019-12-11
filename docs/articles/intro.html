@@ -75,7 +75,7 @@
       <h1>Fuzzy_Match</h1>
                         <h4 class="author">Kenneth Stevenson and Harrison Karp</h4>
             
-            <h4 class="date">2019-12-10</h4>
+            <h4 class="date">2019-12-11</h4>
       
       
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -110,69 +110,69 @@
 <a class="sourceLine" id="cb2-5" data-line-number="5">politwoops<span class="op">$</span>full_name &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scramble.html">scramble</a></span>(politwoops<span class="op">$</span>full_name, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">congress[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="st">"name"</span>]</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  [1] "Sherrod Brown"    "Maria Cantwell"   "ihn Cardin"       "Tom harber"      </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  [5] "Bob Cameyh Jr."   "Bog Corper"       "Diannc Fernstein" "zlrin Hatch"     </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  [9] "Amy Kzobuchyr"    "Claire McCaskill"</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  [1] "Sherrod Bgomn"    "Maria Cantwyll"   "Beu Cardbn"       "Tom Carper"      </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  [5] "Bob Casey, Jr."   "Boz porker"       "DiagnesFeinstein" "Orrio Hytch"     </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  [9] "Amy Klobubhar"    "Claire McCaskill"</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">politwoops[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="st">"full_name"</span>]</a>
 <a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; # A tibble: 10 x 1</span></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;    full_name     </span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;    &lt;chr&gt;         </span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  1 Matt Conpolly </span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  1 Matt Connolly </span></a>
 <a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;  2 Lisa Scheller </span></a>
 <a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt;  3 Susan Collins </span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;  4 Woody Thmasher</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  5 Tom Tiffany   </span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;  4 Woodx Thrasher</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  5 Tom Tiffanz   </span></a>
 <a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt;  6 Michael Opela </span></a>
 <a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt;  7 Amanda Stuck  </span></a>
 <a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt;  8 Tricia Zunker </span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;  9 Jasov Church  </span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 10 Jessics King</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;  9 Jason Church  </span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 10 Jessica qing</span></a></code></pre></div>
 <p>The scramble function randomly changed characters for the names so we can test the fuzzy_match. First we want to use the clean() function on each dataset so we can minimize the differences between the two columns we are going to join by.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">congress &lt;-<span class="st"> </span><span class="kw"><a href="../reference/clean.html">clean</a></span>(congress, name, <span class="dt">selected =</span> <span class="st">","</span>, <span class="dt">suffixes =</span> T, <span class="dt">prefixes =</span> T)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">congress[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;  [1] "Sherrod Brown"         "Maria Cantwell"        "ihn Cardin"           </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;  [4] "Tom harber"            "Bob Cameyh"            "Bog Corper"           </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  [7] "Diannc Fernstein"      "zlrin Hatch"           "Amy Kzobuchyr"        </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; [10] "Claire McCaskill"      "Bob Menendez"          "Bill Nelson (Florida)"</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [13] "Bernie Sanders"        "Debbie Stabenow"       "Jon fevter"           </span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [16] "Sheldon Whitehoufe"    "John iarrassx"         "Rofet Wicker"         </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [19] "wamar Atexander"       "Thad Cochran"</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;  [1] "Sherrod Bgomn"         "Maria Cantwyll"        "Beu Cardbn"           </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;  [4] "Tom Carper"            "Bob Casey"             "Boz porker"           </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  [7] "DiagnesFeinstein"      "Orrio Hytch"           "Amy Klobubhar"        </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; [10] "Claire McCaskill"      "nob Msnendez"          "Bill Nelson wFmorida)"</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [13] "Bernie Sanders"        "Debbie Stabenow"       "Jzn Tesper"           </span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [16] "Shesden Whitehouse"    "Johnnbarrasso"         "Roder Wicker"         </span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [19] "wamar Alexacder"       "Thad Cochran"</span></a></code></pre></div>
 <p>So now we have removed the prefixes, suffixes and commas from each column of names.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fuzzy_match.html">fuzzy_match</a></span>(congress, politwoops, name, full_name, <span class="dt">cutoff =</span> <span class="fl">.1</span>, </a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">                  <span class="dt">join_type =</span> <span class="st">"inner"</span>, <span class="dt">sort =</span> <span class="st">"desc"</span>)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">df[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>,]</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;                  name gender        full_name         match_vals</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1    Marsha Blackburn      F Marsha Blankburn 0.0972222222222222</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2  David o. Cisilline      M  David Cicilline 0.0962962962962963</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3  David o. Cisilline      M  David Cicilline 0.0962962962962963</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4  David o. Cisilline      M  David Cicilline 0.0962962962962963</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5  David o. Cisilline      M  David Cicilline 0.0962962962962963</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6  Carolyn B. Maloney      F  varolyn Maloney 0.0962962962962963</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 7      gavier Becerra      M   Xxvier Becerra 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 8      Jerry MgNernen      M   Jerry McNerney 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 9      Jerry MgNernen      M   Jerry McNerney 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10     Jerry MgNernen      M   Jerry McNerney 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 11     Jerry MgNernen      M   Jerry McNerney 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 12     Bruce hokiquin      M   Bruce Poliquin 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; 13     Bruce hokiquin      M   Bruce Poliquin 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; 14     Bruce hokiquin      M   Bruce Poliquin 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; 15     Bruce hokiquin      M   Bruce Poliquin 0.0952380952380952</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;          user_name account_type</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; 1       VoteMarsha     campaign</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; 2   davidcicilline     campaign</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 3     RepCicilline     official</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 4   davidcicilline     campaign</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 5     RepCicilline     official</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; 6  CarolynBMaloney     campaign</span></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt; 7        AGBecerra     official</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt; 8      RepMcNerney     official</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; 9    jerrymcnerney     campaign</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; 10     RepMcNerney     official</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt; 11   jerrymcnerney     campaign</span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt; 12     RepPoliquin     official</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt; 13   BrucePoliquin     campaign</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; 14     RepPoliquin     official</span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; 15   BrucePoliquin     campaign</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;                  name gender       full_name         match_vals       user_name</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1      Lisa Murkowski      F  Lisa Murkiwski 0.0989010989010989   lisamurkowski</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2  Robert B. Aderholt      M Roqert Aderholt 0.0962962962962963 Robert_Aderholt</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3      Chucq Grasslgy      M  Chuck Grassley 0.0952380952380952   ChuckGrassley</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4      Ranvy Hultgoen      M  Randy Hultgren 0.0952380952380952     RepHultgren</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5      Richqrd Shhlby      M  Richard Shelby 0.0952380952380952       SenShelby</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6      Joaquin Casyjo      M  Joaquin Castro 0.0952380952380952 Castro4Congress</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 7      MarthaoMcSaoly      F  Martha McSally 0.0952380952380952    SenMcSallyAZ</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 8      Debvie Dhngell      F  Debbie Dingell 0.0952380952380952   RepDebDingell</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 9      Debvie Dhngell      F  Debbie Dihgell 0.0952380952380952      debdingell</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10     haise Stefanik      F  Ekise Stefanik 0.0952380952380952     RepStefanik</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 11     haise Stefanik      F  Ekise Stefanik 0.0952380952380952   EliseStefanik</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 12     haise Stefanik      F  Ekise Stefanik 0.0952380952380952     RepStefanik</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; 13     haise Stefanik      F  Ekise Stefanik 0.0952380952380952   EliseStefanik</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; 14     Mikg Gallaghed      M  Mike Gallagher 0.0952380952380952    RepGallagher</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; 15     Mikg Gallaghed      M  Mike Gallagher 0.0952380952380952       MikeforWI</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;    account_type</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; 1      official</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; 2      official</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 3      official</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 4      official</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 5      official</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; 6      campaign</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt; 7      official</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt; 8      official</span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; 9      campaign</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; 10     official</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt; 11     campaign</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt; 12     official</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt; 13     campaign</span></a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; 14     official</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; 15     campaign</span></a></code></pre></div>
 <p>Using the sort argument sorted the table in descending order of the match_vals column so the row at top is the least accurate. Looking at the by.x and by.y column, it’s clear that this is the correct merge. The probability of having a mismatch further down is low since the first row had the biggest string distance between the matching columns.</p>
 </div>
   </div>
